@@ -1,0 +1,58 @@
+<%- include('partials/header.html') %>
+
+<section class="noticia">
+    <div class="center">
+        <div class="noticia-single">
+            <h2><%= noticia.titulo %></h2>
+            <div class="img-noticia">
+                <img src="<%= noticia.imagem %>" alt="">
+            </div>
+            <div class="autor-name">
+                <span>Por <%= noticia.autor %></span>
+            </div>
+            <div class="noticia-texto">
+                <p>
+                 <%- noticia.conteudo %>
+                </p>
+            </div>
+        </div>
+        <div class="mais-lidas">
+            <h3>Mais Lidas</h3>
+            <div class="box-noticia-mais-lida">
+                <div class="noticia-mais-lida">
+                    <img src="assets/images/natureza1.png" alt="">
+                    <div class="noticia-mais-lida-conteudo">
+                        <h4>NATUREZA</h4>
+                        <p>Donec consectetur libero eget bibendum ullamcorper. Quisque auctor nulla eu enim ultrices laoreet.</p>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="noticia-mais-lida">
+                    <img src="assets/images/leao.png" alt="">
+                    <div class="noticia-mais-lida-conteudo">
+                        <h4>MUNDO ANIMAL</h4>
+                        <p>Donec consectetur libero eget bibendum ullamcorper. Quisque auctor nulla eu enim ultrices laoreet.</p>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="noticia-mais-lida">
+                    <img src="assets/images/fone.png" alt="">
+                    <div class="noticia-mais-lida-conteudo">
+                        <h4>TECNOLOGIA</h4>
+                        <p>Donec consectetur libero eget bibendum ullamcorper. Quisque auctor nulla eu enim ultrices laoreet.</p>
+                    </div>
+                </div>
+                <div class="line"></div>
+                <div class="noticia-mais-lida">
+                    <img src="assets/images/pedra.png" alt="">
+                    <div class="noticia-mais-lida-conteudo">
+                        <h4>LIFESTYLE</h4>
+                        <p>Donec consectetur libero eget bibendum ullamcorper. Quisque auctor nulla eu enim ultrices laoreet.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> 
+
+<%- include('partials/footer.html') %>

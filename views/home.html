@@ -1,0 +1,65 @@
+
+<%- include('partials/header.html') %>
+        <section class="noticia-destaque">
+            <div class="center">
+                <div class="img-destaque">
+                    <div class="icons">
+                        <img src="/assets/icons/coracao.png" alt="">
+                    </div>
+                    <div class="overlay-destaque"></div>
+                    <div class="title-destaque-descricao">
+                        <a href="<%= posts[0].slug %>"><h2><%= posts[0].titulo %></h2></a>
+                        <p><%= posts[0].shortDescription %></p>
+                    </div>
+                    <img src="<%= posts[0].imagem %>">
+                </div>
+            </div>
+        </section>
+
+        <section class="outras-noticias">
+            <div class="title-outras-noiticias">
+                <h2>Últimas Noticias</h2>
+                <div class="center">
+                    <div class="ultimas">
+
+                        <% for(let i = 1; i < posts.length; i++){ %>
+
+                        <div class="box-ultima-single">
+                            <img src="<%= posts[i].imagem %>" alt="">
+                            <div class="conteudo-ultima-single">
+                                <h3><%= posts[i].categoria %></h3>
+                                <h2><%= posts[i].titulo %></h2>
+                                <p><%- posts[i].shortDescription %></p>
+                            </div>
+                            <a href="<%= posts[i].slug %>">Saiba Mais</a>
+                        </div>
+
+                        <% } %>
+
+                    </div> 
+                    <div class="mais-lidas">
+                        <h3>Mais Lidas</h3>
+                        <div class="box-noticia-mais-lida">
+
+                            <% for(let i = 1; i < posts.length; i++){ %>
+
+                            <div class="noticia-mais-lida">
+                                <img src="<%= posts[i].imagem %>" alt="">
+                                <div class="noticia-mais-lida-conteudo">
+                                    <a href="<%= posts[i].slug %>">
+                                        <h4><%= posts[i].categoria %></h4>
+                                        <p><%= posts[i].shortDescription %></p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="line"></div>
+
+                            <% } %> 
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+ <%- include('partials/footer.html') %>

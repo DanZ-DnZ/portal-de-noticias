@@ -30,6 +30,39 @@ app.get('/', (req, res)=>{
     if(req.query.busca == null){
         Posts.find({}).sort({'_id': -1}).exec((err, posts)=>{
 
+            posts = posts.map(function(val){
+                return{
+                    titulo: val.titulo,
+                    conteudo: val.conteudo,
+                    shortDescription: val.conteudo.substr(0, 200),
+                    imagem: val.imagem,
+                    slug: val.slug,
+                    categoria: val.categoria
+                }
+            })
+
+            Posts.find({}).sort({'views': -1}).limit(4).exec((err, postsTop)=>{
+
+                postsTop = postsTop.map(function(val){
+                    return{
+                        titulo: val.titulo,
+                        conteudo: val.conteudo,
+                        shortDescription: val.conteudo.substr(0, 200),
+                        imagem: val.imagem,
+                        slug: val.slug,
+                        categoria: val.categoria
+                    }
+                })
+                res.render('home', {posts: posts, postsTop: postsTop});
+            })
+        });
+        
+
+        
+    }else{
+
+        Posts.find({titulo: {$regex: req.query.busca, $options:"i"}},(err, posts)=>{
+
             posts = posts.map((val)=>{
                 return{
                     titulo: val.titulo,
@@ -40,17 +73,38 @@ app.get('/', (req, res)=>{
                     categoria: val.categoria
                 }
             })
-            res.render('home', {posts: posts});
-        })    
-    }else{
-        res.render('busca', {});
+
+            res.render('busca', {posts: posts, contagem: posts.length});
+        })
+
+       
     }
 
 })
 
 app.get('/:slug',(req, res)=>{
     Posts.findOneAndUpdate({slug: req.params.slug}, {$inc: {views: 1}}, {new: true}, (err, response)=>{
-        res.render('single', {noticia: response});
+
+        if(response != null){
+
+            Posts.find({}).sort({'views': -1}).limit(4).exec((err, postsTop)=>{
+
+                postsTop = postsTop.map(function(val){
+                    return{
+                        titulo: val.titulo,
+                        conteudo: val.conteudo,
+                        shortDescription: val.conteudo.substr(0, 200),
+                        imagem: val.imagem,
+                        slug: val.slug,
+                        categoria: val.categoria
+                    }
+                })
+                res.render('single', {noticia: response, postsTop: postsTop});
+            })        
+        } else {
+            res.render('error', {});
+        }
+       
     })
 })
 

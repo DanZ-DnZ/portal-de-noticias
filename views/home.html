@@ -41,14 +41,14 @@
                         <h3>Mais Lidas</h3>
                         <div class="box-noticia-mais-lida">
 
-                            <% for(let i = 1; i < posts.length; i++){ %>
+                            <% for(let i = 0; i < postsTop.length; i++){ %>
 
                             <div class="noticia-mais-lida">
-                                <img src="<%= posts[i].imagem %>" alt="">
+                                <img src="<%= postsTop[i].imagem %>" alt="">
                                 <div class="noticia-mais-lida-conteudo">
-                                    <a href="<%= posts[i].slug %>">
-                                        <h4><%= posts[i].categoria %></h4>
-                                        <p><%= posts[i].shortDescription %></p>
+                                    <a href="<%= postsTop[i].slug %>">
+                                        <h4><%= postsTop[i].titulo %></h4>
+                                        <p><%= postsTop[i].shortDescription %></p>
                                     </a>
                                 </div>
                             </div>

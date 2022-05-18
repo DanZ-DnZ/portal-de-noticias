@@ -277,6 +277,12 @@ footer{
     .icons img{
         width: 70%;
     }
+    .error{
+        height: 80%;
+    }
+    .error h2{
+        font-size: 80%;
+    }
 }
 
 section.noticia{
@@ -314,3 +320,23 @@ section.noticia{
     width: 80%;
     border-radius: 10px;
 }
+.error{
+    width: 100%;
+    text-align: center;
+    background-color: #e6e3e3;
+    padding: 10%;
+}
+
+.error h1{
+    color: #33439b;
+    font-size: 60px;
+    margin-bottom: 43px;
+}
+.error a{
+    text-decoration: none;
+    color: white;
+    padding: 1%;
+    background-color: #33439b;
+    border-radius: 10px;
+}
+

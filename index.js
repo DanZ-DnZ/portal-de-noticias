@@ -3,9 +3,13 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const mongoose = require('mongoose');
 
+var session = require("express-session");
+
 const app = express();
 
-const Posts = require('./posts.js');
+const Posts = require('./models/posts');
+const Users = require('./models/users');
+const { Console } = require("console");
 
 mongoose.connect( 'mongodb+srv://root:Gj7XzWsjKeznZVkB@cluster0.dgsqn.mongodb.net/dnz?retryWrites=true&w=majority',
 {useNewUrlParser: true, useUnifiedTopology: true})
@@ -14,6 +18,11 @@ mongoose.connect( 'mongodb+srv://root:Gj7XzWsjKeznZVkB@cluster0.dgsqn.mongodb.ne
 }).catch((err)=>{
     console.log(err.message);
 });
+
+app.use(session({
+    secret: 'keybord cat',
+    cookie: { maxAge: 60000}
+}))
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -55,10 +64,7 @@ app.get('/', (req, res)=>{
                 })
                 res.render('home', {posts: posts, postsTop: postsTop});
             })
-        });
-        
-
-        
+        });      
     }else{
 
         Posts.find({titulo: {$regex: req.query.busca, $options:"i"}},(err, posts)=>{
@@ -107,6 +113,34 @@ app.get('/:slug',(req, res)=>{
        
     })
 })
+
+app.get('/admin/login', (req, res)=>{
+    if(req.session.login == null){
+        res.render('login');
+    }else{
+        res.render('admin-panel', {});
+    }
+})
+
+app.get('/registro/novo-cadastro', (req,res)=>{
+    res.render('cadastro',{});
+})
+app.post('/admin/login', (req, res)=>{
+    let user = req.body.login;
+    let senha = req.body.senha;
+    Users.findOne({user: user}).exec((err, user)=>{
+        if(user.senha = senha){
+            if(user.admin = true){
+
+            }else{
+                
+            }
+        }else{
+
+        }
+    })
+})
+
 
 app.listen(5000, ()=>{
     console.log('Server Rodando!');

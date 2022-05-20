@@ -339,4 +339,53 @@ section.noticia{
     background-color: #33439b;
     border-radius: 10px;
 }
+.login{
+    width: 35%;
+    height: 450px;
+    margin: 2% auto;
+    background-color: white;
+    padding: 5%;
+    border-radius: 10px;
+}
+.login h2{
+    text-align: center;
+    margin-bottom: 15%;
+    color: #33439b;
+}
 
+.login form input[type=text],
+.login form input[type=password],
+.login form input[type=email]
+{
+    margin-bottom: 4%;
+    width: 100%;
+    padding: 7px;
+}
+.login form input[type=submit]{
+ width: 40%;
+ padding: 7px;
+ margin-left: 32%;
+ background-color: #33439b;
+ color: white;
+ border: none;
+ border-radius: 10px;
+ margin-bottom: 20px;
+}
+.login form label{
+    font-size: 20px;
+    font-weight: bold;
+    color: #33439b;
+}
+.title-login{
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 40px 0 0 0;
+}
+.register{
+    text-align: center;
+    margin-top: 20px;
+}
+.register a{
+    margin-left: 5px;
+}
